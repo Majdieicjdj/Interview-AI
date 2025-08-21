@@ -4,5 +4,5 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: './', // 👈 this fixes broken JS/CSS paths on Vercel
+  base: '', // 👈 this fixes broken JS/CSS paths on Vercel
 })
