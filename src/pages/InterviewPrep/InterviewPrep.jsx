@@ -31,8 +31,10 @@ const InterviewPrep = () => {
     try {
       const response = await axiosInstance.get(API_PATHS.SESSION.GET_ONE(sessionId));
 
-      if (response.data && response.data.session) {
-        setSessionData(response.data.session);
+      console.log('RESSSS',response);
+
+      if (response.data && response.data) {
+        setSessionData(response.data);
       } else {
         console.warn("No session data found in response", response.data);
       }
