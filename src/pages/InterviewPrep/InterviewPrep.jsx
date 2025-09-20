@@ -23,14 +23,12 @@ const InterviewPrep = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isUpdateLoader, setIsUpdateLoader] = useState(false);
 
-  // --- THIS FUNCTION IS NOW CORRECTED ---
   const fetchSessionDetailsById = async () => {
     try {
       const response = await axiosInstance.get(
         API_PATHS.SESSION.GET_ONE(sessionId)
       );
 
-      // FIX: Access the nested 'session' object from the response
       if (response.data && response.data.session) {
         setSessionData(response.data.session);
       } else {
@@ -41,7 +39,6 @@ const InterviewPrep = () => {
       toast.error("Failed to load session");
     }
   };
-  // --- END OF CORRECTION ---
 
   const generateConceptExplanation = async (question) => {
     try {
@@ -80,7 +77,6 @@ const InterviewPrep = () => {
     }
   };
 
-  // This function is also corrected from our previous step
   const uploadMoreQuestions = async () => {
     try {
       setIsUpdateLoader(true);
@@ -101,7 +97,6 @@ const InterviewPrep = () => {
         questions: generatedQuestions,
       });
 
-      // Update the UI state with the new questions
       setSessionData((prevData) => ({
         ...prevData,
         questions: [...(prevData.questions || []), ...generatedQuestions],
@@ -122,7 +117,6 @@ const InterviewPrep = () => {
     }
   }, [sessionId]);
 
-  // The rest of your component's JSX is correct.
   return (
     <DashboardLayout>
       <RoleInfoHeader
